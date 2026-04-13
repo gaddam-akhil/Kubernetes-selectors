@@ -5,14 +5,29 @@ metadata:
 spec:
   affinity:
     nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
+      # HARD rule - labels must match
+      requiredDuringSchedulingIgnoredDuringExecution: 
         nodeSelectorTerms:
         - matchExpressions:
-          - key: topology.kubernetes.io/zone
+          - key: topology.kubernetes.io/zone  # node label key
+            operator: In   # must be IN the values list 
+            values:  
+            - us-east-1d   # only this zone
+            - us-east-1c
+      preferredDuringSchedulingIgnoredDuringExecution:  
+      - weight: 100
+        preference:
+          matchExpressions:
+          - key: project
             operator: In
-            values:
-            - us-east-1d
-            #- antarctica-west1
+            value: "roboshop"
+      - weight: 10
+        preference:
+          matchExpressions:
+          - key: project
+            operator: In
+            value: "amazon"       
+
   containers:
   - name: nginx
     image: nginx
