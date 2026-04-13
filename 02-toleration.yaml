@@ -1,13 +1,31 @@
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: nginx-toleration
+# spec:
+#   containers:
+#   - name: nginx
+#     image: nginx
+#   nodeSelector:
+#     project: roboshop  
+#   tolerations:
+#   - key: "project"
+#     operator: "Equal"
+#     value: "roboshop"
+#     effect: "NoExecute"
+
 apiVersion: v1
 kind: Pod
-metadata:
-  name: nginx-toleration
+metadata: 
+  name: nginx-toleration-nodeSelector
 spec:
   containers:
   - name: nginx
     image: nginx
+  nodeSelector:
+    project: roboshop
   tolerations:
-  - key: "project"
+    key: "project"
     operator: "Equal"
     value: "roboshop"
-    effect: "NoSchedule"  
+    effect: "NoExecute"      
