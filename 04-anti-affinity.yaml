@@ -17,7 +17,12 @@ spec:
           - key: "project"
             operator: NotIn
             values:
-            - amazon  
+            - amazon
+  tolerations:
+  - key: "hardware"
+    operator: "Equal"
+    value: "gpu"
+    effect: "NoExecute"          
   containers:
   - name: nginx
     image: nginx
