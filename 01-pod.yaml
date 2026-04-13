@@ -7,5 +7,4 @@ spec:
   - name: nginx
     image: nginx
   nodeSelector:
-    key: "project"
-    value: roboshop  
+    project: roboshop  
