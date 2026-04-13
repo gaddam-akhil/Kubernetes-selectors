@@ -25,7 +25,7 @@ spec:
   nodeSelector:
     project: roboshop
   tolerations:
-    key: "project"
+  - key: "project"
     operator: "Equal"
     value: "roboshop"
     effect: "NoExecute"      
