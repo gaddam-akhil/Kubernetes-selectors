@@ -15,7 +15,7 @@ spec:
             operator: In   # must be IN the values list 
             values:  
             - us-east-1d   # only this zone
-            - us-east-1c
+            - us-east-1b
       preferredDuringSchedulingIgnoredDuringExecution:  
       - weight: 100
         preference:
@@ -23,7 +23,8 @@ spec:
           - key: project
             operator: In
             values:
-            - roboshoppp
+            - roboshop
+           #- roboshoppp
       - weight: 10
         preference:
           matchExpressions:
